@@ -4,6 +4,10 @@ import Burger from '../../components/Burger/Burger'
 import BuildControls from '../../components/Burger/BuildControls/BuildControls'
 const INGREDIANT_PRICES = {
  salad :4,
+ meat:3,
+ bacon:3,
+ cheese:3,
+
 }
 class BurgerBuilder extends Component
 {
@@ -49,7 +53,9 @@ class BurgerBuilder extends Component
         <Aux>
             <Burger ingrediants = {this.state.ingrediant}/>
             
-            <BuildControls  ingrediantAdded = {this.addIngrediantHandler} removeingrediantRemoved={this.removeIngrediantHandler}/>
+            <BuildControls  ingrediantAdded = {this.addIngrediantHandler} removeingrediantRemoved={this.removeIngrediantHandler}
+            totalPrice ={this.state.totalPrice}
+            />
         </Aux>
     );    
     }

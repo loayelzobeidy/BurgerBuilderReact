@@ -15,6 +15,7 @@ const burger = (props)=>{
     transforIngrediants = <p>pleasee addd ingrediant</p>
 return(
     <div className={classes.Burger}>
+    
     <BurgerIngredient type = "bread-top"/>
 {transforIngrediants}
     <BurgerIngredient type = "bread-bottom"/>

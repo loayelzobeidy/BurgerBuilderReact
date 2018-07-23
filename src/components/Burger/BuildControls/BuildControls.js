@@ -11,8 +11,12 @@ const controls = [
 ]
 const buildControls = (props)=>(
 <div className={classes.BuildControls}>
+{console.log(props.totalPrice)}
+<p>Current Burger Price: {props.totalPrice}</p>
     {
         controls.map((ctrl)=>{
+           
+            
            return  <BuildControl key={ctrl.label} label = {ctrl.label} added={()=>{props.ingrediantAdded(ctrl.type)}}
             removed ={()=>{ props.removeingrediantRemoved(ctrl.type)}}
         
@@ -20,6 +24,7 @@ const buildControls = (props)=>(
         }
     )
     }
+    <button className='waves-effect waves-light btn'>Checkout Now</button>
 </div>
 );
 export default buildControls
