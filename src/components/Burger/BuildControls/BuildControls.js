@@ -24,7 +24,7 @@ const buildControls = (props)=>(
         }
     )
     }
-    <button className='waves-effect waves-light btn'>Checkout Now</button>
+    <button className='waves-effect waves-light btn'  onClick={props.purchase} >Checkout</button>
 </div>
 );
 export default buildControls

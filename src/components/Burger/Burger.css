@@ -3,6 +3,7 @@ width:60%;
 margin:auto;
 height:250px;
 overflow: scroll;
+background-color: #aed581;
 text-align: center;
 font-size: 1.2rem;
 }

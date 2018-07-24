@@ -18,11 +18,31 @@ class BurgerBuilder extends Component
        meat:0,
        cheese:0
    },
-   totalPrice : 4
+   totalPrice : 4,
+   purchasable : false,
+   pruchased :false,
+    }
+    purchase = ()=>{
+        let ingrediants = {
+            ...this.state.ingrediant
+        }
+        console.log(ingrediants,'ingrediants')
+        const sum =Object.keys(ingrediants).map((iskey)=>
+    {
+        return ingrediants[iskey];
+    }).reduce((sum,el)=>{
+        return sum+el;
+    },0)
+    console.log(sum,'susmm')
+    let temp = (this.state.totalPrice>4)
+    console.log(temp)
+    this.setState({purchasable :temp});
+    console.log(this.state,'purchaseeeee')
     }
     addIngrediantHandler = (type)=>{
         const oldCount = this.state.ingrediant[type];
         const newCount = this.state.ingrediant[type]+1;
+        this.purchase();        
         const updatedIngrediant={
             ...this.state.ingrediant
         };
@@ -35,6 +55,7 @@ class BurgerBuilder extends Component
     }
     removeIngrediantHandler = (type)=>{
         const oldCount = this.state.ingrediant[type];
+        this.purchase();        
         if(oldCount==0)
         return
         const newCount = this.state.ingrediant[type]-1;
@@ -46,16 +67,29 @@ class BurgerBuilder extends Component
         const priceAddition = INGREDIANT_PRICES[type];
         const oldPrice = this.state.totalPrice;
         const newPrice = oldPrice-priceAddition;
+        this.purchase();
         this.setState({ingrediant:updatedIngrediant,totalPrice:newPrice})
+    }
+    purchaseHandler=()=>{
+        this.setState({pruchased:true})
+        console.log(this.state)
     }
     render(){
     return (
         <Aux>
-            <Burger ingrediants = {this.state.ingrediant}/>
+            <div className = 'container'>
             
-            <BuildControls  ingrediantAdded = {this.addIngrediantHandler} removeingrediantRemoved={this.removeIngrediantHandler}
+            <div className = 'row'>
+            <Burger  className='col s1'ingrediants = {this.state.ingrediant}/>
+            
+            <BuildControls className='col s1' ingrediantAdded = {this.addIngrediantHandler} removeingrediantRemoved={this.removeIngrediantHandler}
             totalPrice ={this.state.totalPrice}
+            purchasable ={this.purchasable}
+            purchase = {this.purchaseHandler}
             />
+            </div>
+            </div>
+            
         </Aux>
     );    
     }

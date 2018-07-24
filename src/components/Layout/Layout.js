@@ -3,25 +3,21 @@ import Aux from '../../hoc/Aux'
 import classes from './Layout.css'
 const layout =(props)=>(
     <div>
-    <nav class="white pink lighten-2" role="navigation">
+    <nav class="white light-green lighten-2" role="navigation">
     <div class="nav-wrapper container">
-      <a id="logo-container" href="#" class="brand-logo">Logo</a>
+      <a id="logo-container" href="/" class="brand-logo">Logo</a>
       <ul class="right hide-on-med-and-down">
-        <li><a href="#">Navbar Link</a></li>
+        <li><a href="#">Menu</a></li>
       </ul>
 
-      <ul id="nav-mobile" class="sidenav">
-        <li><a href="#">Navbar Link</a></li>
-      </ul>
-      <a href="#" data-target="nav-mobile" class="sidenav-trigger"><i class="material-icons">menu</i></a>
-    </div>
+       </div>
   </nav>
     <Aux >
 <main className={classes.Content}>
     {props.children}
 </main>
 </Aux>
-<footer class="page-footer teal">
+<footer class="page-footer teal light-green lighten-2">
     <div class="container">
       <div class="row">
         <div class="col l6 s12">
