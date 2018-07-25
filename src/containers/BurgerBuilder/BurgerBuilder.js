@@ -1,5 +1,7 @@
 import React, {Component}from 'react';
 import Aux from '../../hoc/Aux' ;
+import {connect} from 'react-redux';
+import * as action_types from '../../store/actions'
 import Burger from '../../components/Burger/Burger'
 import BuildControls from '../../components/Burger/BuildControls/BuildControls'
 const INGREDIANT_PRICES = {
@@ -11,17 +13,6 @@ const INGREDIANT_PRICES = {
 }
 class BurgerBuilder extends Component
 {
-    state={
-   ingrediant:{
-       salad:0,
-       bacon:0,
-       meat:0,
-       cheese:0
-   },
-   totalPrice : 4,
-   purchasable : false,
-   pruchased :false,
-    }
     purchase = ()=>{
         let ingrediants = {
             ...this.state.ingrediant
@@ -80,10 +71,10 @@ class BurgerBuilder extends Component
             <div className = 'container'>
             
             <div className = 'row'>
-            <Burger  className='col s1'ingrediants = {this.state.ingrediant}/>
+            <Burger  className='col s1'ingrediants = {this.props.ings}/>
             
-            <BuildControls className='col s1' ingrediantAdded = {this.addIngrediantHandler} removeingrediantRemoved={this.removeIngrediantHandler}
-            totalPrice ={this.state.totalPrice}
+            <BuildControls className='col s1' ingrediantAdded = {this.props.onIngrediantAdd} removeingrediantRemoved={this.props.onIngrediantRemove}
+            totalPrice ={this.props.totalPrice}
             purchasable ={this.purchasable}
             purchase = {this.purchaseHandler}
             />
@@ -95,4 +86,17 @@ class BurgerBuilder extends Component
     }
 
 }
-export default BurgerBuilder;
+const mapDispatchToProps = dispatch=>{
+    return {
+        onIngrediantAdd:(ingredian)=>dispatch({type:action_types.ADD_INGREDIANT,ingrediantName:ingredian}),
+        onIngrediantRemove:(ingredian)=>dispatch({type:action_types.REMOVE_INGREDIANT,ingrediantName:ingredian})
+       
+    }
+}
+const mapStateToProps = state => {
+    return {
+        ings: state.ingrediant,
+    };
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(BurgerBuilder);
