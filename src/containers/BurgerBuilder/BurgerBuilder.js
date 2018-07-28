@@ -72,7 +72,7 @@ class BurgerBuilder extends Component
             
             <div className = 'row'>
             <Burger  className='col s1'ingrediants = {this.props.ings}/>
-            
+       {console.log(this.props,' ingrediants')}
             <BuildControls className='col s1' ingrediantAdded = {this.props.onIngrediantAdd} removeingrediantRemoved={this.props.onIngrediantRemove}
             totalPrice ={this.props.totalPrice}
             purchasable ={this.purchasable}
@@ -88,8 +88,8 @@ class BurgerBuilder extends Component
 }
 const mapDispatchToProps = dispatch=>{
     return {
-        onIngrediantAdd:(ingredian)=>dispatch({type:action_types.ADD_INGREDIANT,ingrediantName:ingredian}),
-        onIngrediantRemove:(ingredian)=>dispatch({type:action_types.REMOVE_INGREDIANT,ingrediantName:ingredian})
+        onIngrediantAdd:(ingredian)=>dispatch({type:action_types.ADD_INGREDIANT,ingreadiantName:ingredian}),
+        onIngrediantRemove:(ingredian)=>dispatch({type:action_types.REMOVE_INGREDIANT,ingreadiantName:ingredian})
        
     }
 }

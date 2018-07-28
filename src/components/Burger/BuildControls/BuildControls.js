@@ -15,12 +15,13 @@ const buildControls = (props)=>(
 <p>Current Burger Price: {props.totalPrice}</p>
     {
         controls.map((ctrl)=>{
-           
-            
+           if(ctrl.type!=undefined){
+            {console.log(ctrl.type),"ingrediant type"}
            return  <BuildControl key={ctrl.label} label = {ctrl.label} added={()=>{props.ingrediantAdded(ctrl.type)}}
             removed ={()=>{ props.removeingrediantRemoved(ctrl.type)}}
         
         />
+           }
         }
     )
     }
